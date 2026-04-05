@@ -53,6 +53,24 @@ struct MarkdownRendererTests {
     }
 
     @Test
+    func preparesPreviewMarkdownByInliningLocalImages() throws {
+        let baseDirectory = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString, isDirectory: true)
+        try FileManager.default.createDirectory(at: baseDirectory, withIntermediateDirectories: true)
+
+        let imageURL = baseDirectory.appendingPathComponent("demo.png")
+        let pngData = Data(base64Encoded: "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAusB9sS5t6sAAAAASUVORK5CYII=")!
+        try pngData.write(to: imageURL)
+
+        let markdown = MarkdownRenderer.prepareMarkdownForPreview(
+            "![Alt text](./demo.png)",
+            baseURL: baseDirectory
+        )
+
+        #expect(markdown.contains("data:image/png;base64,"))
+        #expect(markdown.contains("./demo.png") == false)
+    }
+
+    @Test
     func scalesBaseFontSize() {
         #expect(MarkdownRenderer.baseFontSize(textScale: 1.0, isOverlay: false) == 16.0)
         #expect(MarkdownRenderer.baseFontSize(textScale: 0.1, isOverlay: false) == 13.0)

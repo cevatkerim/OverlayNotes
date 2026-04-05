@@ -2,6 +2,10 @@
 
 OverlayNotes is a native macOS Markdown editor with a floating presenter overlay. It is designed for speaker notes, demos, and window-sharing workflows where you want a clean reading surface without losing an editable source document.
 
+## Demo
+
+![OverlayNotes demo](./demo.png)
+
 ## Highlights
 
 - Native macOS app built with SwiftUI and AppKit

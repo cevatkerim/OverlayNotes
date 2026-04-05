@@ -195,9 +195,13 @@ struct MarkdownPreviewTextView: NSViewRepresentable {
             }
 
             lastRenderedPayload = pendingPayload
+            let previewMarkdown = MarkdownRenderer.prepareMarkdownForPreview(
+                pendingPayload.text,
+                baseURL: pendingPayload.baseURL
+            )
             let fallbackHTML = MarkdownRenderer.renderHTMLBody(pendingPayload.text, baseURL: pendingPayload.baseURL)
             let scriptPayload: [String: Any] = [
-                "markdown": pendingPayload.text,
+                "markdown": previewMarkdown,
                 "fallbackHTML": fallbackHTML,
                 "baseFontSize": MarkdownRenderer.baseFontSize(textScale: pendingPayload.textScale, isOverlay: pendingPayload.isOverlay),
                 "isOverlay": pendingPayload.isOverlay,

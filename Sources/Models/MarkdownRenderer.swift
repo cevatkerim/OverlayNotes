@@ -1,6 +1,37 @@
 import Foundation
 
 enum MarkdownRenderer {
+    static func prepareMarkdownForPreview(_ text: String, baseURL: URL?) -> String {
+        let nsText = text as NSString
+        let pattern = #"!\[([^\]]*)\]\(([^)\s]+)(?:\s+"([^"]*)")?\)"#
+        guard let regex = try? NSRegularExpression(pattern: pattern) else {
+            return text
+        }
+
+        let matches = regex.matches(in: text, range: NSRange(location: 0, length: nsText.length))
+        guard matches.isEmpty == false else {
+            return text
+        }
+
+        var markdown = text
+
+        for match in matches.reversed() {
+            guard match.numberOfRanges >= 3 else { continue }
+
+            let altText = nsText.substring(with: match.range(at: 1))
+            let destination = nsText.substring(with: match.range(at: 2))
+            let title = match.range(at: 3).location != NSNotFound ? nsText.substring(with: match.range(at: 3)) : nil
+            let previewDestination = previewImageDestination(destination, baseURL: baseURL)
+            let titleSuffix = title.map { " \"\($0)\"" } ?? ""
+            let replacement = "![\(altText)](\(previewDestination)\(titleSuffix))"
+
+            guard let range = Range(match.range, in: markdown) else { continue }
+            markdown.replaceSubrange(range, with: replacement)
+        }
+
+        return markdown
+    }
+
     static func htmlDocument() -> String {
         let markdownItScript = bundledMarkdownItScript()
         let githubStylesheet = bundledGitHubStylesheet()
@@ -1148,6 +1179,48 @@ enum MarkdownRenderer {
 
         let resolved = URL(fileURLWithPath: destination, relativeTo: baseURL).standardizedFileURL
         return resolved.absoluteString
+    }
+
+    private static func previewImageDestination(_ destination: String, baseURL: URL?) -> String {
+        if let absoluteURL = URL(string: destination), absoluteURL.scheme != nil {
+            return absoluteURL.absoluteString
+        }
+
+        guard let baseURL, baseURL.isFileURL else {
+            return destination
+        }
+
+        let resolvedURL = URL(fileURLWithPath: destination, relativeTo: baseURL).standardizedFileURL
+        guard let embeddedURL = embeddedImageDataURL(for: resolvedURL) else {
+            return resolvedURL.absoluteString
+        }
+
+        return embeddedURL
+    }
+
+    private static func embeddedImageDataURL(for fileURL: URL) -> String? {
+        guard fileURL.isFileURL else { return nil }
+        guard let imageMimeType = imageMimeType(for: fileURL.pathExtension) else { return nil }
+        guard let data = try? Data(contentsOf: fileURL) else { return nil }
+
+        return "data:\(imageMimeType);base64,\(data.base64EncodedString())"
+    }
+
+    private static func imageMimeType(for pathExtension: String) -> String? {
+        switch pathExtension.lowercased() {
+        case "png":
+            return "image/png"
+        case "jpg", "jpeg":
+            return "image/jpeg"
+        case "gif":
+            return "image/gif"
+        case "webp":
+            return "image/webp"
+        case "svg":
+            return "image/svg+xml"
+        default:
+            return nil
+        }
     }
 }
 
