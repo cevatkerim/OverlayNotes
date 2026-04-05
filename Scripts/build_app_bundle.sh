@@ -10,6 +10,7 @@ MACOS_DIR="$CONTENTS_DIR/MacOS"
 RESOURCES_DIR="$CONTENTS_DIR/Resources"
 ICONSET_DIR="$BUILD_DIR/AppIcon.iconset"
 ICNS_PATH="$RESOURCES_DIR/AppIcon.icns"
+APP_ICONSET_SOURCE="$ROOT_DIR/App/Assets.xcassets/AppIcon.appiconset"
 
 export HOME="$ROOT_DIR/.codex-home"
 export XDG_CACHE_HOME="$ROOT_DIR/.codex-cache"
@@ -17,7 +18,7 @@ export CLANG_MODULE_CACHE_PATH="/tmp/overlaynotes-clang-module-cache"
 
 mkdir -p "$HOME" "$XDG_CACHE_HOME" "$CLANG_MODULE_CACHE_PATH" "$BUILD_DIR"
 
-swift build
+swift build --disable-sandbox
 
 EXECUTABLE_PATH="$(find "$ROOT_DIR/.build" -type f -name OverlayNotes -path '*/debug/OverlayNotes' | head -n 1)"
 RESOURCE_BUNDLE_PATH="$(find "$ROOT_DIR/.build" -type d -name 'OverlayNotes_OverlayNotes.bundle' | head -n 1)"
@@ -39,16 +40,16 @@ cp "$EXECUTABLE_PATH" "$MACOS_DIR/OverlayNotes"
 chmod +x "$MACOS_DIR/OverlayNotes"
 cp -R "$RESOURCE_BUNDLE_PATH" "$RESOURCES_DIR/"
 
-cp "$ROOT_DIR/Generated/AppIcons/AppIcon.appiconset/icon-16@1x.png" "$ICONSET_DIR/icon_16x16.png"
-cp "$ROOT_DIR/Generated/AppIcons/AppIcon.appiconset/icon-16@2x.png" "$ICONSET_DIR/icon_16x16@2x.png"
-cp "$ROOT_DIR/Generated/AppIcons/AppIcon.appiconset/icon-32@1x.png" "$ICONSET_DIR/icon_32x32.png"
-cp "$ROOT_DIR/Generated/AppIcons/AppIcon.appiconset/icon-32@2x.png" "$ICONSET_DIR/icon_32x32@2x.png"
-cp "$ROOT_DIR/Generated/AppIcons/AppIcon.appiconset/icon-128@1x.png" "$ICONSET_DIR/icon_128x128.png"
-cp "$ROOT_DIR/Generated/AppIcons/AppIcon.appiconset/icon-128@2x.png" "$ICONSET_DIR/icon_128x128@2x.png"
-cp "$ROOT_DIR/Generated/AppIcons/AppIcon.appiconset/icon-256@1x.png" "$ICONSET_DIR/icon_256x256.png"
-cp "$ROOT_DIR/Generated/AppIcons/AppIcon.appiconset/icon-256@2x.png" "$ICONSET_DIR/icon_256x256@2x.png"
-cp "$ROOT_DIR/Generated/AppIcons/AppIcon.appiconset/icon-512@1x.png" "$ICONSET_DIR/icon_512x512.png"
-cp "$ROOT_DIR/Generated/AppIcons/AppIcon.appiconset/icon-512@2x.png" "$ICONSET_DIR/icon_512x512@2x.png"
+cp "$APP_ICONSET_SOURCE/icon-16@1x.png" "$ICONSET_DIR/icon_16x16.png"
+cp "$APP_ICONSET_SOURCE/icon-16@2x.png" "$ICONSET_DIR/icon_16x16@2x.png"
+cp "$APP_ICONSET_SOURCE/icon-32@1x.png" "$ICONSET_DIR/icon_32x32.png"
+cp "$APP_ICONSET_SOURCE/icon-32@2x.png" "$ICONSET_DIR/icon_32x32@2x.png"
+cp "$APP_ICONSET_SOURCE/icon-128@1x.png" "$ICONSET_DIR/icon_128x128.png"
+cp "$APP_ICONSET_SOURCE/icon-128@2x.png" "$ICONSET_DIR/icon_128x128@2x.png"
+cp "$APP_ICONSET_SOURCE/icon-256@1x.png" "$ICONSET_DIR/icon_256x256.png"
+cp "$APP_ICONSET_SOURCE/icon-256@2x.png" "$ICONSET_DIR/icon_256x256@2x.png"
+cp "$APP_ICONSET_SOURCE/icon-512@1x.png" "$ICONSET_DIR/icon_512x512.png"
+cp "$APP_ICONSET_SOURCE/icon-512@2x.png" "$ICONSET_DIR/icon_512x512@2x.png"
 
 /usr/bin/iconutil -c icns "$ICONSET_DIR" -o "$ICNS_PATH"
 

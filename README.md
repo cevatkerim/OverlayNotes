@@ -1,66 +1,94 @@
-# Overlay Notes
+# OverlayNotes
 
-Native macOS overlay notes app built with SwiftUI for the app UI and AppKit for the floating overlay windows.
+OverlayNotes is a native macOS Markdown editor with a floating presenter overlay. It is designed for speaker notes, demos, and window-sharing workflows where you want a clean reading surface without losing an editable source document.
 
-## What It Does
+## Highlights
 
-- Opens and saves Markdown notes as plain `.md` files.
-- Creates one independent floating overlay pane per note window.
-- Supports `Edit`, `Preview`, and `Split` note views.
-- Supports `Read` and `Edit` overlay modes.
-- Persists overlay appearance and placement separately from the Markdown file.
-- Provides two explicit share-safety modes:
-  - `Window Share`: for sharing a single app or window.
-  - `Desktop Safe`: for sharing a full desktop when a second, unshared display is available.
+- Native macOS app built with SwiftUI and AppKit
+- Markdown `Edit`, `Preview`, and `Split` modes
+- Bundled `markdown-it` rendering with offline support
+- Relative image rendering in preview for saved notes
+- Optional synced scrolling in Split view
+- Floating overlay window with `Read` and `Edit` modes
+- Per-note overlay settings persisted outside the `.md` file
+- Explicit sharing modes for same-window and second-display setups
 
-## Important Limitation
+## Sharing Model
 
-This app does **not** claim to make a visible same-display overlay universally invisible to all screen-capture paths on modern macOS. The product language and UI are intentionally explicit about that:
+OverlayNotes does not attempt to promise invisibility across every screen-capture path on macOS.
 
-- `Window Share` is meant for Zoom/Teams window sharing.
-- `Desktop Safe` is meant for dual-display workflows.
+- `Window`: keeps the overlay on the same display as the note window and is intended for app or window sharing in tools like Zoom or Teams
+- `Second Display`: moves the overlay to another display and is intended for desktop-sharing setups where the shared display is different from the display you read from
 
-## Open In Xcode
+## Install
 
-Open [OverlayNotes.xcodeproj](/Users/kerimincedayi/Development/AI/ai-notes/OverlayNotes.xcodeproj) in Xcode and run the `OverlayNotes` scheme.
+An unsigned drag-install DMG is included in the repository at:
 
-This is now the primary way to build and run the app. Running from the Xcode project gives you a normal macOS app bundle with a Dock icon and proper activation behavior.
+```bash
+Releases/OverlayNotes.dmg
+```
 
-## Build From Xcode
+Because this build is unsigned and not notarized, macOS may warn the first time it is opened. On a trusted machine, you can install it by dragging `OverlayNotes.app` into `Applications` and then opening it with the standard right-click `Open` flow if Gatekeeper blocks the first launch.
+
+## Build
+
+### Xcode
 
 ```bash
 xcodebuild -project OverlayNotes.xcodeproj -scheme OverlayNotes -configuration Debug -derivedDataPath .xcode-derived build
 ```
 
-The built app will be at:
+Debug app output:
 
 ```bash
 .xcode-derived/Build/Products/Debug/OverlayNotes.app
 ```
 
-## Build With SwiftPM
-
-The Swift package is still present for lightweight command-line builds and tests, but it is no longer the recommended way to launch the app from Xcode.
+### Tests
 
 ```bash
-swift build
+swift test --disable-sandbox
 ```
 
-## Test
+### Legacy SwiftPM App Bundle
+
+For quick local experiments there is also a lightweight bundle script:
 
 ```bash
-swift test
+./Scripts/build_app_bundle.sh
 ```
 
-## Run With SwiftPM
+This is not the primary distribution path, but it can still assemble a local `.app` from the SwiftPM build output.
+
+## Package An Unsigned DMG
 
 ```bash
-swift run OverlayNotes
+./Scripts/package_unsigned_dmg.sh
 ```
 
-## Repo Layout
+Release DMG output:
 
-- `Sources/Models`: document and overlay state types.
-- `Sources/Controllers`: note session coordination and AppKit overlay window management.
-- `Sources/Views`: editor and overlay SwiftUI views.
-- `Sources/Persistence`: per-note overlay settings storage.
+```bash
+Releases/OverlayNotes.dmg
+```
+
+## App Icons
+
+Source icon assets live in:
+
+```bash
+Icons/
+```
+
+The checked-in Xcode app icon set in `App/Assets.xcassets/AppIcon.appiconset` is generated from those macOS sizes.
+
+## Project Structure
+
+- `App/`: macOS app bundle resources, asset catalog, and plist
+- `Sources/Controllers`: note session coordination and overlay window control
+- `Sources/Models`: markdown rendering and document state
+- `Sources/Persistence`: per-note overlay settings storage
+- `Sources/Support`: AppKit bridges for editor and preview behavior
+- `Sources/Views`: SwiftUI scenes and editor UI
+- `Scripts/`: local build and packaging helpers
+- `Releases/`: distributable DMG artifacts intended for sharing

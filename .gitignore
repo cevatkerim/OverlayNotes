@@ -10,3 +10,4 @@ Build
 *.xcuserdatad
 *.xcworkspace/xcuserdata
 *.xcodeproj/xcuserdata
+Generated/AppIcons/overlay-notes-*.png
