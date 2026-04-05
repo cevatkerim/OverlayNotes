@@ -171,6 +171,7 @@ struct NoteEditorView: View {
                         }
                     }
                     .pickerStyle(.segmented)
+                    .disabled(session.overlayPlacement.isClickThrough)
 
                     Toggle(
                         "Lock and click through",

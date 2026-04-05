@@ -10,10 +10,13 @@ struct NoteSessionTests {
         let store = OverlaySettingsStore(baseDirectory: baseDirectory)
         let session = NoteSession(initialText: "", fileURL: nil, settingsStore: store)
 
+        session.overlayMode = .edit
+
         session.setClickThrough(true)
 
         #expect(session.overlayPlacement.isClickThrough)
         #expect(session.overlayPlacement.isLocked)
+        #expect(session.overlayMode == .read)
 
         session.setClickThrough(false)
 

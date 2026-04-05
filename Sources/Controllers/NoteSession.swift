@@ -213,6 +213,10 @@ final class NoteSession: ObservableObject {
     }
 
     func setClickThrough(_ enabled: Bool) {
+        if enabled {
+            overlayMode = .read
+        }
+
         updateOverlayPlacement { placement in
             placement.isClickThrough = enabled
             placement.isLocked = enabled

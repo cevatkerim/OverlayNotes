@@ -15,7 +15,7 @@ final class OverlayWindowController: NSObject, NSWindowDelegate {
         self.session = session
         self.window = OverlayWindow(
             contentRect: CGRect(x: 0, y: 0, width: 440, height: 280),
-            styleMask: [.borderless, .resizable],
+            styleMask: [.borderless, .resizable, .nonactivatingPanel],
             backing: .buffered,
             defer: false
         )
@@ -49,6 +49,8 @@ final class OverlayWindowController: NSObject, NSWindowDelegate {
         window.isOpaque = false
         window.backgroundColor = .clear
         window.level = .statusBar
+        window.isFloatingPanel = true
+        window.becomesKeyOnlyIfNeeded = true
         // AppKit forbids combining canJoinAllSpaces with moveToActiveSpace.
         window.collectionBehavior = [.canJoinAllSpaces, .fullScreenAuxiliary]
         window.hasShadow = true
@@ -60,7 +62,7 @@ final class OverlayWindowController: NSObject, NSWindowDelegate {
     }
 
     private func installContent() {
-        let hosting = NSHostingView(rootView: OverlayPaneView(session: session))
+        let hosting = OverlayHostingView(rootView: OverlayPaneView(session: session))
         hosting.wantsLayer = true
         hosting.layer?.masksToBounds = false
         window.contentView = hosting
@@ -126,8 +128,8 @@ final class OverlayWindowController: NSObject, NSWindowDelegate {
 
     private func applyWindowState(animated: Bool) {
         window.level = session.overlayPlacement.staysOnTop ? .statusBar : .normal
-        window.ignoresMouseEvents = session.overlayPlacement.isClickThrough
         window.appearance = session.overlayAppearance.themeOverride.appearance
+        window.setLockedScrollingEnabled(session.overlayPlacement.isClickThrough)
 
         guard session.isOverlayVisible, session.canDisplayOverlay else {
             window.orderOut(nil)
@@ -143,11 +145,8 @@ final class OverlayWindowController: NSObject, NSWindowDelegate {
             }
         }
 
-        if session.overlayPlacement.isClickThrough {
+        if session.overlayPlacement.isClickThrough || session.overlayMode == .read {
             window.orderFrontRegardless()
-        } else if session.overlayMode == .read {
-            window.orderFront(nil)
-            session.focusEditorWindow()
         } else {
             NSApplication.shared.activate(ignoringOtherApps: true)
             window.makeKeyAndOrderFront(nil)
@@ -155,7 +154,35 @@ final class OverlayWindowController: NSObject, NSWindowDelegate {
     }
 }
 
-private final class OverlayWindow: NSWindow {
+private final class OverlayWindow: NSPanel {
+    private var isLockedScrollingEnabled = false
+
+    func setLockedScrollingEnabled(_ enabled: Bool) {
+        isLockedScrollingEnabled = enabled
+    }
+
     override var canBecomeKey: Bool { true }
-    override var canBecomeMain: Bool { true }
+    override var canBecomeMain: Bool { false }
+
+    override func sendEvent(_ event: NSEvent) {
+        if isLockedScrollingEnabled {
+            switch event.type {
+            case .leftMouseDown, .leftMouseUp,
+                    .rightMouseDown, .rightMouseUp,
+                    .otherMouseDown, .otherMouseUp,
+                    .leftMouseDragged, .rightMouseDragged, .otherMouseDragged:
+                return
+            default:
+                break
+            }
+        }
+
+        super.sendEvent(event)
+    }
+}
+
+private final class OverlayHostingView<Content: View>: NSHostingView<Content> {
+    override func acceptsFirstMouse(for event: NSEvent?) -> Bool {
+        true
+    }
 }
