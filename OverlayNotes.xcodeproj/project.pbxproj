@@ -1,0 +1,350 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 60;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A30000000000000000000001 /* NoteSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000001 /* NoteSession.swift */; };
+		A30000000000000000000002 /* OverlayWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000002 /* OverlayWindowController.swift */; };
+		A30000000000000000000003 /* MarkdownRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000003 /* MarkdownRenderer.swift */; };
+		A30000000000000000000004 /* NoteDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000004 /* NoteDocument.swift */; };
+		A30000000000000000000005 /* OverlayModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000005 /* OverlayModels.swift */; };
+		A30000000000000000000006 /* OverlayNotesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000006 /* OverlayNotesApp.swift */; };
+		A30000000000000000000007 /* OverlaySettingsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000007 /* OverlaySettingsStore.swift */; };
+		A30000000000000000000008 /* EditorWindowReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000008 /* EditorWindowReader.swift */; };
+		A30000000000000000000009 /* MarkdownTextEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000009 /* MarkdownTextEditor.swift */; };
+		A3000000000000000000000A /* NSScreen+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000000000000000000000A /* NSScreen+Helpers.swift */; };
+		A3000000000000000000000B /* VisualEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000000000000000000000B /* VisualEffectView.swift */; };
+		A3000000000000000000000C /* MarkdownPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000000000000000000000C /* MarkdownPreviewView.swift */; };
+		A3000000000000000000000D /* NoteDocumentScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000000000000000000000D /* NoteDocumentScene.swift */; };
+		A3000000000000000000000E /* NoteEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000000000000000000000E /* NoteEditorView.swift */; };
+		A3000000000000000000000F /* OverlayPaneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000000000000000000000F /* OverlayPaneView.swift */; };
+			A30000000000000000000010 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000011 /* Assets.xcassets */; };
+			A30000000000000000000011 /* MarkdownPreviewTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000012 /* MarkdownPreviewTextView.swift */; };
+			A30000000000000000000012 /* markdown-it.min.js in Resources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000013 /* markdown-it.min.js */; };
+			A30000000000000000000013 /* markdown-it-task-lists.min.js in Resources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000014 /* markdown-it-task-lists.min.js */; };
+			A30000000000000000000014 /* github.css in Resources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000015 /* github.css */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A10000000000000000000006 /* OverlayNotes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OverlayNotes.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A20000000000000000000001 /* NoteSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteSession.swift; sourceTree = "<group>"; };
+		A20000000000000000000002 /* OverlayWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayWindowController.swift; sourceTree = "<group>"; };
+		A20000000000000000000003 /* MarkdownRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownRenderer.swift; sourceTree = "<group>"; };
+		A20000000000000000000004 /* NoteDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDocument.swift; sourceTree = "<group>"; };
+		A20000000000000000000005 /* OverlayModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayModels.swift; sourceTree = "<group>"; };
+		A20000000000000000000006 /* OverlayNotesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayNotesApp.swift; sourceTree = "<group>"; };
+		A20000000000000000000007 /* OverlaySettingsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlaySettingsStore.swift; sourceTree = "<group>"; };
+		A20000000000000000000008 /* EditorWindowReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorWindowReader.swift; sourceTree = "<group>"; };
+		A20000000000000000000009 /* MarkdownTextEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownTextEditor.swift; sourceTree = "<group>"; };
+		A2000000000000000000000A /* NSScreen+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSScreen+Helpers.swift"; sourceTree = "<group>"; };
+		A2000000000000000000000B /* VisualEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualEffectView.swift; sourceTree = "<group>"; };
+		A2000000000000000000000C /* MarkdownPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownPreviewView.swift; sourceTree = "<group>"; };
+		A2000000000000000000000D /* NoteDocumentScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDocumentScene.swift; sourceTree = "<group>"; };
+		A2000000000000000000000E /* NoteEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteEditorView.swift; sourceTree = "<group>"; };
+		A2000000000000000000000F /* OverlayPaneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayPaneView.swift; sourceTree = "<group>"; };
+		A20000000000000000000010 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+			A20000000000000000000011 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+			A20000000000000000000012 /* MarkdownPreviewTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownPreviewTextView.swift; sourceTree = "<group>"; };
+			A20000000000000000000013 /* markdown-it.min.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = "Resources/Vendor/markdown-it.min.js"; sourceTree = "<group>"; };
+			A20000000000000000000014 /* markdown-it-task-lists.min.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = "Resources/Vendor/markdown-it-task-lists.min.js"; sourceTree = "<group>"; };
+			A20000000000000000000015 /* github.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = "Resources/Vendor/github.css"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A10000000000000000000008 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A10000000000000000000002 = {
+			isa = PBXGroup;
+			children = (
+				A1000000000000000000000B /* Sources */,
+				A10000000000000000000011 /* App */,
+				A10000000000000000000003 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A10000000000000000000003 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A10000000000000000000006 /* OverlayNotes.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A1000000000000000000000B /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				A1000000000000000000000C /* Controllers */,
+				A1000000000000000000000D /* Models */,
+					A20000000000000000000006 /* OverlayNotesApp.swift */,
+					A20000000000000000000013 /* markdown-it.min.js */,
+					A20000000000000000000014 /* markdown-it-task-lists.min.js */,
+					A20000000000000000000015 /* github.css */,
+					A1000000000000000000000E /* Persistence */,
+					A1000000000000000000000F /* Support */,
+					A10000000000000000000010 /* Views */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		A1000000000000000000000C /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				A20000000000000000000001 /* NoteSession.swift */,
+				A20000000000000000000002 /* OverlayWindowController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		A1000000000000000000000D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A20000000000000000000003 /* MarkdownRenderer.swift */,
+				A20000000000000000000004 /* NoteDocument.swift */,
+				A20000000000000000000005 /* OverlayModels.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		A1000000000000000000000E /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				A20000000000000000000007 /* OverlaySettingsStore.swift */,
+			);
+			path = Persistence;
+			sourceTree = "<group>";
+		};
+		A1000000000000000000000F /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				A20000000000000000000008 /* EditorWindowReader.swift */,
+				A20000000000000000000009 /* MarkdownTextEditor.swift */,
+				A20000000000000000000012 /* MarkdownPreviewTextView.swift */,
+				A2000000000000000000000A /* NSScreen+Helpers.swift */,
+				A2000000000000000000000B /* VisualEffectView.swift */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
+		A10000000000000000000010 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A2000000000000000000000C /* MarkdownPreviewView.swift */,
+				A2000000000000000000000D /* NoteDocumentScene.swift */,
+				A2000000000000000000000E /* NoteEditorView.swift */,
+				A2000000000000000000000F /* OverlayPaneView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		A10000000000000000000011 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				A20000000000000000000011 /* Assets.xcassets */,
+				A20000000000000000000010 /* Info.plist */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A10000000000000000000005 /* OverlayNotes */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A1000000000000000000000A /* Build configuration list for PBXNativeTarget "OverlayNotes" */;
+			buildPhases = (
+				A10000000000000000000007 /* Sources */,
+				A10000000000000000000008 /* Frameworks */,
+				A10000000000000000000009 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = OverlayNotes;
+			productName = OverlayNotes;
+			productReference = A10000000000000000000006 /* OverlayNotes.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A10000000000000000000001 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 2640;
+				LastUpgradeCheck = 2640;
+				TargetAttributes = {
+					A10000000000000000000005 = {
+						CreatedOnToolsVersion = 26.4;
+						LastSwiftMigration = 2640;
+					};
+				};
+			};
+			buildConfigurationList = A10000000000000000000004 /* Build configuration list for PBXProject "OverlayNotes" */;
+			compatibilityVersion = "Xcode 15.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A10000000000000000000002;
+			productRefGroup = A10000000000000000000003 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A10000000000000000000005 /* OverlayNotes */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A10000000000000000000009 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+				files = (
+					A30000000000000000000010 /* Assets.xcassets in Resources */,
+					A30000000000000000000012 /* markdown-it.min.js in Resources */,
+					A30000000000000000000013 /* markdown-it-task-lists.min.js in Resources */,
+					A30000000000000000000014 /* github.css in Resources */,
+				);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A10000000000000000000007 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A30000000000000000000001 /* NoteSession.swift in Sources */,
+				A30000000000000000000002 /* OverlayWindowController.swift in Sources */,
+				A30000000000000000000003 /* MarkdownRenderer.swift in Sources */,
+				A30000000000000000000004 /* NoteDocument.swift in Sources */,
+				A30000000000000000000005 /* OverlayModels.swift in Sources */,
+				A30000000000000000000006 /* OverlayNotesApp.swift in Sources */,
+				A30000000000000000000007 /* OverlaySettingsStore.swift in Sources */,
+				A30000000000000000000008 /* EditorWindowReader.swift in Sources */,
+				A30000000000000000000009 /* MarkdownTextEditor.swift in Sources */,
+				A30000000000000000000011 /* MarkdownPreviewTextView.swift in Sources */,
+				A3000000000000000000000A /* NSScreen+Helpers.swift in Sources */,
+				A3000000000000000000000B /* VisualEffectView.swift in Sources */,
+				A3000000000000000000000C /* MarkdownPreviewView.swift in Sources */,
+				A3000000000000000000000D /* NoteDocumentScene.swift in Sources */,
+				A3000000000000000000000E /* NoteEditorView.swift in Sources */,
+				A3000000000000000000000F /* OverlayPaneView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		A40000000000000000000001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				SDKROOT = macosx;
+				SWIFT_VERSION = 6.0;
+			};
+			name = Debug;
+		};
+		A40000000000000000000002 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				SDKROOT = macosx;
+				SWIFT_VERSION = 6.0;
+			};
+			name = Release;
+		};
+		A40000000000000000000003 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGNING_REQUIRED = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_LANGUAGE = en;
+				ENABLE_HARDENED_RUNTIME = NO;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = App/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.codex.overlaynotes;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 6.0;
+			};
+			name = Debug;
+		};
+		A40000000000000000000004 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_LANGUAGE = en;
+				ENABLE_HARDENED_RUNTIME = NO;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = App/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.codex.overlaynotes;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 6.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A10000000000000000000004 /* Build configuration list for PBXProject "OverlayNotes" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A40000000000000000000001 /* Debug */,
+				A40000000000000000000002 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		A1000000000000000000000A /* Build configuration list for PBXNativeTarget "OverlayNotes" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A40000000000000000000003 /* Debug */,
+				A40000000000000000000004 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A10000000000000000000001 /* Project object */;
+}

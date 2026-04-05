@@ -1,0 +1,12 @@
+.DS_Store
+.build
+.buildx
+.codex-cache
+.codex-home
+Build
+.xcode-derived
+.swiftpm
+*.tgz
+*.xcuserdatad
+*.xcworkspace/xcuserdata
+*.xcodeproj/xcuserdata
